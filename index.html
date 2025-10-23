@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adolescence — The Age of Change</title>
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Цвета: Light Blue/Purple Accent */
+        :root {
+            --color-primary: #58a6ff; /* Голубой */
+            --color-secondary: #a879e6; /* Фиолетовый */
+            --color-background: #f0f4f8; /* Очень светлый фон */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: #1f2937;
+        }
+
+        /* Анимированный фон (Light gradient movement) */
+        .animated-bg {
+            background: linear-gradient(-45deg, var(--color-background), #e2e8f0, #d1d5db);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Общие стили для секций */
+        .section-card {
+            background-color: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s ease-out;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        /* Стиль для hover-перевода в таблице и списке */
+        .hover-translate {
+            position: relative;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .hover-translate-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-5px);
+            background-color: var(--color-secondary);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+            white-space: nowrap;
+            z-index: 10;
+        }
+        .hover-translate:hover .hover-translate-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        /* Card Flip Animation */
+        .flip-card {
+            perspective: 1000px;
+            height: 100%;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 1rem;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+        .flip-card-front {
+            background-color: var(--color-primary);
+            color: white;
+        }
+        .flip-card-back {
+            background-color: var(--color-secondary);
+            color: white;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="animated-bg p-4 sm:p-8">
+    <div id="top" class="max-w-5xl mx-auto space-y-16">
+
+        <!-- 1. Hero Section -->
+        <header class="text-center pt-16 pb-12 bg-white rounded-3xl shadow-xl">
+            <h1 class="text-5xl sm:text-7xl font-extrabold text-gray-800 mb-4 tracking-tight">
+                Adolescence — the age of <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">change and discovery</span>
+            </h1>
+            <p class="text-xl sm:text-2xl text-gray-600 mb-8 font-light">
+                Learn how to understand yourself and your parents
+            </p>
+            <button onclick="scrollToSection('what-is-adolescence')" class="px-8 py-3 bg-purple-500 text-white font-semibold rounded-full shadow-lg hover:bg-purple-600 transform hover:scale-105 transition duration-300">
+                Start Learning
+            </button>
+        </header>
+
+        <!-- 2. Section 1 — What is Adolescence? -->
+        <section id="what-is-adolescence" class="section-card p-8 sm:p-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 border-b pb-2">1. What is Adolescence?</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                “Adolescence starts when you are aged between about ten and thirteen and is a period of rapid physical change which transforms you from a pre-teen child to the independent young adult that you become in your early twenties.”
+            </p>
+
+            <h3 class="text-2xl font-semibold mb-4 text-gray-700">Key Concepts (Hover for translation)</h3>
+            <div id="concept-list" class="flex flex-wrap gap-3">
+                <!-- Ключевые слова с hover-переводом -->
+                <span class="hover-translate text-lg font-medium bg-blue-100 text-blue-800 px-4 py-1 rounded-full shadow-md transition-colors hover:bg-blue-200">
+                    transition
+                    <span class="hover-translate-tooltip">переходный период</span>
+                </span>
+                <span class="hover-translate text-lg font-medium bg-blue-100 text-blue-800 px-4 py-1 rounded-full shadow-md transition-colors hover:bg-blue-200">
+                    independence
+                    <span class="hover-translate-tooltip">независимость</span>
+                </span>
+                <span class="hover-translate text-lg font-medium bg-blue-100 text-blue-800 px-4 py-1 rounded-full shadow-md transition-colors hover:bg-blue-200">
+                    emotional changes
+                    <span class="hover-translate-tooltip">эмоциональные изменения</span>
+                </span>
+                <span class="hover-translate text-lg font-medium bg-blue-100 text-blue-800 px-4 py-1 rounded-full shadow-md transition-colors hover:bg-blue-200">
+                    freedom
+                    <span class="hover-translate-tooltip">свобода</span>
+                </span>
+            </div>
+            
+            <h3 class="text-2xl font-semibold mt-10 mb-4 text-gray-700">Vocabulary Practice (Flip the cards)</h3>
+            <div id="vocab-flip-cards" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Карточки будут добавлены JS -->
+            </div>
+        </section>
+
+        <!-- 3. Section 2 — Main Areas of Change -->
+        <section id="main-changes" class="section-card p-8 sm:p-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 border-b pb-2">2. Main Areas of Change</h2>
+            <p class="text-lg text-gray-700 mb-6">Explore the main transformations that happen during adolescence. Hover over the rows for the Russian translation.</p>
+
+            <div id="changes-table" class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
+                <div class="grid grid-cols-3 md:grid-cols-4 font-bold text-sm uppercase text-white bg-purple-500 p-4">
+                    <div class="col-span-1">Area</div>
+                    <div class="col-span-2 md:col-span-2">Meaning</div>
+                    <div class="hidden md:block col-span-1">Keywords</div>
+                </div>
+                <!-- Interactive rows added by JS -->
+            </div>
+        </section>
+
+        <!-- 4. Section 3 — How to Handle Your Parents -->
+        <section id="handle-parents" class="section-card p-8 sm:p-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 border-b pb-2">3. How to Handle Your Parents</h2>
+            <p class="text-lg text-gray-700 mb-6">These changes are normal, but they may be a source of conflict. Flip the cards for practical advice in Russian.</p>
+
+            <div id="advice-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Advice cards added by JS -->
+            </div>
+        </section>
+
+        <!-- 5. Section 4 — Useful Vocabulary (TTS) -->
+        <section id="useful-vocab" class="section-card p-8 sm:p-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 border-b pb-2">4. Useful Vocabulary</h2>
+            <p class="text-lg text-gray-700 mb-6">Нажмите на любое слово, чтобы услышать его произношение и увидеть соответствующие формы.</p>
+            
+            <div class="bg-gray-100 p-4 rounded-lg shadow-inner">
+                <div id="tts-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <!-- TTS Cards added by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Section 5 — Key Expressions -->
+        <section id="key-expressions" class="section-card p-8 sm:p-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 border-b pb-2">5. Key Expressions (Hover for Translation)</h2>
+            <p class="text-lg text-gray-700 mb-6">Use these phrases for your video presentation or discussion.</p>
+
+            <ul id="expressions-list" class="space-y-4">
+                <!-- Expressions added by JS -->
+            </ul>
+        </section>
+
+        <!-- 7. Section 6 — Mini Quiz -->
+        <section id="mini-quiz" class="section-card p-8 sm:p-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 border-b pb-2">6. Vocabulary Quiz: Reinforce Your Knowledge</h2>
+            <div id="quiz-container" class="space-y-6">
+                <!-- Quiz questions added by JS -->
+            </div>
+            <div id="quiz-feedback" class="mt-8 text-center text-xl font-bold hidden"></div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-10">
+            <h3 class="text-3xl font-extrabold text-gray-700 mb-4">“Talk. Understand. Grow.”</h3>
+            <button id="back-to-top" class="px-6 py-2 bg-gray-300 text-gray-800 font-semibold rounded-full shadow-md hover:bg-gray-400 transition duration-300 flex items-center justify-center mx-auto" onclick="scrollToTop()">
+                <span class="mr-2">💗</span> Back to Top
+            </button>
+            <p class="mt-4 text-sm text-gray-500">&copy; 2025 Interactive Learning Guide. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // --- DATA OBJECTS ---
+        const vocabFlipData = [
+            { front: "adolescence", back: "подростковый возраст" },
+            { front: "impatient", back: "нетерпеливый" },
+            { front: "critical", back: "критичный" },
+            { front: "dependable", back: "надежный" }
+        ];
+
+        const areasData = [
+            { area: "Freedom", meaning: "You want more freedom and choose your friends. Friends become as important as your family.", keywords: "freedom, choose, friends", translation: "Ты хочешь больше свободы и сам решаешь, с кем проводить время. Друзья становятся такими же важными, как семья." },
+            { area: "Privacy", meaning: "You need your own space and time, away from the constant company of parents.", keywords: "privacy, own space", translation: "Теперь хочется личного пространства и времени наедине." },
+            { area: "Interests", meaning: "New interests (games, social media, chatting) emerge, which parents may not always understand.", keywords: "interests, activities, social media", translation: "Появляются новые интересы (игры, интернет), которые родители не всегда понимают." },
+            { area: "Decisions", meaning: "You want to make decisions yourself, instead of parents telling you what to do.", keywords: "make decisions, independence", translation: "Ты хочешь сам принимать решения, а не чтобы родители говорили, что делать." },
+            { area: "Opinions", meaning: "You form strong opinions, ideals, and a sense of justice, making you idealistic and impatient.", keywords: "idealistic, impatient, emotional changes", translation: "Формируются сильные мнения, идеалы и чувство справедливости." }
+        ];
+
+        const adviceData = [
+            { front: "Show love and respect", back: "❤️ Покажите, что вы их цените: Помогите родителям понять, что они не потеряли ребёнка, а просто он вырос." },
+            { front: "Explain your feelings calmly", back: "🧘 Сохраняйте спокойствие: Родители хотят защитить вас. Объясните свои чувства спокойно." },
+            { front: "Be responsible", back: "✅ Проявляйте ответственность: Придерживайтесь договорённостей, звоните, сообщайте, где вы." },
+            { front: "Understand their side", back: "🤝 Поймите их: Раздражение родителей часто из-за заботы. They want you to do well." },
+            { front: "Communicate regularly", back: "💬 Общайтесь: Больше общения — меньше недопонимания и недоверия." }
+        ];
+        
+        const vocabTTS = [
+            { id: 1, noun: "adolescence", adjective: "adolescent", example: "Adolescence is a time of big change." },
+            { id: 2, noun: "emotion", adjective: "emotional", example: "Teenagers are often emotional." },
+            { id: 3, noun: "idealism", adjective: "idealistic", example: "You have idealistic dreams." },
+            { id: 4, noun: "patience", adjective: "impatient", example: "Don’t be impatient with parents." },
+            { id: 5, noun: "criticism", adjective: "critical", example: "Parents can be critical sometimes." }
+        ];
+
+        const keyExpressions = [
+            { text: "Adolescence is a time of rapid physical and emotional change.", translation: "Подростковый возраст — это время быстрых физических и эмоциональных изменений." },
+            { text: "Teenagers want more freedom and privacy.", translation: "Подростки хотят больше свободы и личного пространства." },
+            { text: "Parents may find it difficult to understand their children’s new interests.", translation: "Родителям может быть сложно понять новые интересы своих детей." },
+            { text: "Good communication helps to build mutual understanding.", translation: "Хорошее общение помогает построить взаимопонимание." },
+            { text: "Adolescents are often idealistic, emotional, and impatient.", translation: "Подростки часто идеалистичны, эмоциональны и нетерпеливы." },
+            { text: "Remember: your parents just want you to be safe and happy.", translation: "Помните: ваши родители просто хотят, чтобы вы были в безопасности и счастливы." }
+        ];
+
+        // START OF NEW ENGLISH QUIZ DATA
+        const quizData = [
+            {
+                question: "What is the key word for the major transformation from child to independent young adult?",
+                options: [
+                    { text: "Stagnation", correct: false },
+                    { text: "Transition", correct: true },
+                    { text: "Stability", correct: false }
+                ],
+                correctAnswer: "Transition"
+            },
+            {
+                question: "Which term describes a teenager's need for personal space and time alone?",
+                options: [
+                    { text: "Independence", correct: false },
+                    { text: "Privacy", correct: true },
+                    { text: "Communication", correct: false }
+                ],
+                correctAnswer: "Privacy"
+            },
+            {
+                question: "If a person is easily irritated by waiting, they are:",
+                options: [
+                    { text: "Idealistic", correct: false },
+                    { text: "Dependable", correct: false },
+                    { text: "Impatient", correct: true }
+                ],
+                correctAnswer: "Impatient"
+            },
+            {
+                question: "The adjective 'emotional' is related to which noun?",
+                options: [
+                    { text: "Idea", correct: false },
+                    { text: "Emotion", correct: true },
+                    { text: "Adolescent", correct: false }
+                ],
+                correctAnswer: "Emotion"
+            },
+            {
+                question: "Forming strong opinions and a sense of justice is often described by the term:",
+                options: [
+                    { text: "Critical", correct: false },
+                    { text: "Idealistic", correct: true },
+                    { text: "Responsible", correct: false }
+                ],
+                correctAnswer: "Idealistic"
+            },
+            {
+                question: "The desire to make decisions yourself relates directly to the concept of:",
+                options: [
+                    { text: "Conflict", correct: false },
+                    { text: "Interests", correct: false },
+                    { text: "Independence", correct: true }
+                ],
+                correctAnswer: "Independence"
+            },
+            {
+                question: "What is the noun form of the adjective 'critical' (as listed in the vocab section)?",
+                options: [
+                    { text: "Criticize", correct: false },
+                    { text: "Criticism", correct: true },
+                    { text: "Criterion", correct: false }
+                ],
+                correctAnswer: "Criticism"
+            },
+            {
+                question: "Which piece of advice emphasizes following through on promises, such as checking in with parents?",
+                options: [
+                    { text: "Show love and respect", correct: false },
+                    { text: "Be responsible", correct: true },
+                    { text: "Explain your feelings calmly", correct: false }
+                ],
+                correctAnswer: "Be responsible"
+            },
+            {
+                question: "The goal of 'Good communication' is to build:",
+                options: [
+                    { text: "Emotional changes", correct: false },
+                    { text: "Mutual understanding", correct: true },
+                    { text: "New interests", correct: false }
+                ],
+                correctAnswer: "Mutual understanding"
+            },
+            {
+                question: "At what age range does the text state adolescence typically begins?",
+                options: [
+                    { text: "About six and nine", correct: false },
+                    { text: "About ten and thirteen", correct: true },
+                    { text: "About fifteen and eighteen", correct: false }
+                ],
+                correctAnswer: "About ten and thirteen"
+            }
+        ];
+        // END OF NEW ENGLISH QUIZ DATA
+
+
+        // --- RENDERING FUNCTIONS ---
+
+        // 2. Vocab Flip Cards
+        function renderVocabFlipCards() {
+            const container = document.getElementById('vocab-flip-cards');
+            vocabFlipData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card h-32 md:h-40 cursor-pointer';
+                card.innerHTML = `
+                    <div class="flip-card-inner" onclick="this.parentNode.classList.toggle('flipped')">
+                        <div class="flip-card-front">
+                            <p class="text-xl font-bold">${item.front}</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="text-lg font-medium">${item.back}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // 3. Main Areas Table
+        function renderChangesTable() {
+            const container = document.getElementById('changes-table');
+            areasData.forEach(item => {
+                const row = document.createElement('div');
+                row.className = 'hover-translate grid grid-cols-3 md:grid-cols-4 items-center p-4 border-t border-gray-200 transition-all hover:bg-blue-50 hover:shadow-lg';
+                row.innerHTML = `
+                    <div class="col-span-1 font-semibold text-purple-600">${item.area}</div>
+                    <div class="col-span-2 md:col-span-2 text-sm">${item.meaning}</div>
+                    <div class="hidden md:block col-span-1 text-xs text-gray-500">${item.keywords}</div>
+                    <span class="hover-translate-tooltip text-sm">${item.translation}</span>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        // 4. Advice Flip Cards
+        function renderAdviceCards() {
+            const container = document.getElementById('advice-cards');
+            adviceData.forEach((item, index) => {
+                const card = document.createElement('div');
+                // Use different accent colors for visual variety
+                const accentColor = index % 2 === 0 ? 'bg-blue-500' : 'bg-purple-500';
+                const accentColorBack = index % 2 === 0 ? 'bg-purple-500' : 'bg-blue-500';
+
+                card.className = 'flip-card h-48 cursor-pointer';
+                card.innerHTML = `
+                    <div class="flip-card-inner" onclick="this.parentNode.classList.toggle('flipped')">
+                        <div class="flip-card-front ${accentColor}">
+                            <div class="text-xl font-bold p-2">${item.front}</div>
+                        </div>
+                        <div class="flip-card-back ${accentColorBack}">
+                            <div class="text-lg font-light p-2">${item.back}</div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // 5. Useful Vocabulary (TTS)
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            } else {
+                console.error("Speech Synthesis not supported in this browser.");
+            }
+        }
+
+        function renderTTSGrid() {
+            const container = document.getElementById('tts-grid');
+            vocabTTS.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-white p-4 rounded-xl shadow-lg cursor-pointer transform transition-all hover:scale-105 hover:shadow-xl border-t-4 border-blue-400';
+                card.onclick = () => speakWord(item.noun);
+                card.innerHTML = `
+                    <p class="text-2xl font-bold text-blue-600 mb-1">${item.noun}</p>
+                    <p class="text-sm font-medium text-gray-700">${item.adjective}</p>
+                    <p class="text-xs italic text-gray-500 mt-2">"${item.example}"</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // 6. Key Expressions
+        function renderKeyExpressions() {
+            const container = document.getElementById('expressions-list');
+            keyExpressions.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.className = 'hover-translate text-lg bg-white p-4 rounded-lg shadow-md transition-all hover:bg-gray-50 transform hover:scale-[1.01]';
+                listItem.innerHTML = `
+                    <p class="font-medium text-gray-800">${item.text}</p>
+                    <span class="hover-translate-tooltip">${item.translation}</span>
+                `;
+                container.appendChild(listItem);
+            });
+        }
+
+        // 7. Mini Quiz
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+            quizData.forEach((quiz, index) => {
+                const questionBlock = document.createElement('div');
+                questionBlock.className = 'bg-white p-6 rounded-xl shadow-lg';
+                // UPDATED TO ENGLISH
+                questionBlock.innerHTML = `<p class="font-semibold text-xl mb-4 text-purple-600">Question ${index + 1}: ${quiz.question}</p>`;
+
+                quiz.options.forEach((option, optionIndex) => {
+                    const optionButton = document.createElement('button');
+                    optionButton.className = 'quiz-option block w-full text-left px-4 py-2 mt-2 border border-gray-300 rounded-lg transition-all duration-200 hover:bg-blue-50 text-gray-700';
+                    optionButton.textContent = `${String.fromCharCode(65 + optionIndex)}. ${option.text}`;
+                    optionButton.setAttribute('data-correct', option.correct);
+                    optionButton.setAttribute('data-question-index', index);
+                    optionButton.onclick = handleQuizAnswer;
+                    questionBlock.appendChild(optionButton);
+                });
+                container.appendChild(questionBlock);
+            });
+        }
+
+        let totalCorrect = 0;
+        let answeredQuestions = 0;
+
+        function handleQuizAnswer(event) {
+            const button = event.target;
+            const isCorrect = button.getAttribute('data-correct') === 'true';
+            const questionIndex = button.getAttribute('data-question-index');
+            const questionContainer = button.closest('div');
+            const quizOptions = questionContainer.querySelectorAll('.quiz-option');
+
+            // Disable all buttons for this question
+            quizOptions.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-blue-50');
+            });
+
+            // Apply feedback styling
+            if (isCorrect) {
+                button.classList.add('bg-green-100', 'border-green-500');
+                totalCorrect++;
+            } else {
+                button.classList.add('bg-red-100', 'border-red-500');
+                // Highlight correct answer
+                quizOptions.forEach(btn => {
+                    if (btn.getAttribute('data-correct') === 'true') {
+                        btn.classList.add('bg-green-100', 'border-green-500', 'ring-2', 'ring-green-400');
+                    }
+                });
+            }
+
+            answeredQuestions++;
+            if (answeredQuestions === quizData.length) {
+                showQuizResults();
+            }
+        }
+
+        function showQuizResults() {
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.classList.remove('hidden');
+            feedback.classList.add('text-gray-800');
+            // UPDATED TO ENGLISH
+            feedback.innerHTML = `
+                Quiz completed! You scored ${totalCorrect} out of ${quizData.length} correct answers.
+                <p class="text-sm font-light mt-2 text-gray-600">${getQuizComment(totalCorrect)}</p>
+            `;
+            // Scroll to results
+            feedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function getQuizComment(score) {
+            // UPDATED TO ENGLISH
+            if (score === quizData.length) return "Excellent! You have mastered the material.";
+            if (score >= quizData.length * 0.7) return "Good job! You have a very clear understanding.";
+            if (score >= quizData.length / 2) return "Not bad! You have a general understanding.";
+            return "Keep studying! Review the key concepts above.";
+        }
+
+        // --- UTILITY FUNCTIONS ---
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Function to handle scroll animations (appear from bottom)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // --- INITIALIZATION ---
+        window.onload = function() {
+            renderVocabFlipCards();
+            renderChangesTable();
+            renderAdviceCards();
+            renderTTSGrid();
+            renderKeyExpressions();
+            renderQuiz();
+
+            // Set up scroll animations
+            document.querySelectorAll('.section-card').forEach(card => {
+                observer.observe(card);
+            });
+        };
+    </script>
+</body>
+</html>
